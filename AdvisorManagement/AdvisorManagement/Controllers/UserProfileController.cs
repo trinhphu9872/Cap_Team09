@@ -57,6 +57,9 @@ namespace AdvisorManagement.Controllers
             }
         }
 
+
+
+
         public void RefreshSession()
         {
             HttpContext.GetOwinContext().Authentication.Challenge(
