@@ -48,7 +48,7 @@ namespace AdvisorManagement.Areas.Admin.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public ActionResult Create([Bind(Include = "ID,user_code,id_Role,username,gender,phone,address,email,dateofbirth,createtime,picture")] AccountUser accountUser)
         {
             if (ModelState.IsValid)
