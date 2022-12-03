@@ -98,6 +98,11 @@ namespace AdvisorManagement.Controllers
             return View();
         }
 
+        public ActionResult ThongBao()
+        {
+            return View();
+        }
+
         public async Task<string> GetTokenForApplication()
         {
             string signedInUserID = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
