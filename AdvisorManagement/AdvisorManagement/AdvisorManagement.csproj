@@ -237,9 +237,6 @@
     <Compile Include="Models\Student.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ViewModel\MenuItem.cs" />
     <Compile Include="Models\ViewModel\StudentClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -283,6 +280,11 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\AccountUsers\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AccountUsers\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AccountUsers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AccountUsers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AccountUsers\Index.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -290,11 +292,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\AccountUsers\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\AccountUsers\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\AccountUsers\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\AccountUsers\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\AccountUsers\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\function.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

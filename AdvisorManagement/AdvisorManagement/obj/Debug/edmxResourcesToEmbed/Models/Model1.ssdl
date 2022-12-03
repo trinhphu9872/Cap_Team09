@@ -63,16 +63,6 @@
     <Property Name="gradePointAverage" Type="varchar" MaxLength="10" />
     <Property Name="id_Status" Type="int" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <Association Name="FK_AccountUser_Role">
     <End Role="Role" Type="Self.Role" Multiplicity="1" />
     <End Role="AccountUser" Type="Self.AccountUser" Multiplicity="*" />
@@ -141,7 +131,6 @@
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoleMenu" EntityType="Self.RoleMenu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AccountUser_Role" Association="Self.FK_AccountUser_Role">
       <End Role="Role" EntitySet="Role" />
       <End Role="AccountUser" EntitySet="AccountUser" />

@@ -73,16 +73,6 @@
     <Property Name="id_Status" Type="Int32" />
     <NavigationProperty Name="Class" Relationship="Self.FK_Student_Class" FromRole="Student" ToRole="Class" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <Association Name="FK_AccountUser_Role">
     <End Role="Role" Type="Self.Role" Multiplicity="1" />
     <End Role="AccountUser" Type="Self.AccountUser" Multiplicity="*" />
@@ -151,7 +141,6 @@
     <EntitySet Name="Role" EntityType="Self.Role" />
     <EntitySet Name="RoleMenu" EntityType="Self.RoleMenu" />
     <EntitySet Name="Student" EntityType="Self.Student" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <AssociationSet Name="FK_AccountUser_Role" Association="Self.FK_AccountUser_Role">
       <End Role="Role" EntitySet="Role" />
       <End Role="AccountUser" EntitySet="AccountUser" />
