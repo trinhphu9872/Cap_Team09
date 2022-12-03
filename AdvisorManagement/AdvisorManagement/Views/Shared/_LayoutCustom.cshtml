@@ -1,0 +1,352 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - 01</title>
+
+    <link href="./Content/bootstrap.css" rel="stylesheet" />
+    <link href="./Content/site.css" rel="stylesheet" />
+    @*<link href="./Content/css/menu.css" rel="stylesheet" />*@
+    <link href="./Content/css/Yersin.css" rel="stylesheet" />
+
+    <script src="./Scripts/modernizr-2.6.2.js"></script>
+
+    <script src="./Scripts/jquery-1.10.2.js"></script>
+    <script src=".Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script src="./Scripts/respond.js"></script>
+    <script src="./Scripts/bootstrap.min.js"></script>
+    <script src="./Scripts/function.js"></script>
+
+    @*<link href="/bundles/cssbyschool" rel="stylesheet" />*@
+
+    <script type="text/javascript" src="./scripts/moment.min.js"></script>
+    <script type="text/javascript" src=".scripts/bootstrap-datetimepicker.min.js"></script>
+
+
+    <link rel="stylesheet" href="./Content/bootstrap-datetimepicker.css" />
+    <link href="./Content/select2-bootstrap.css" rel="stylesheet" />
+    <link href="./Content/select2_2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="./Content/select2_2.js"></script>
+
+
+    <style>
+        .bgfooterr {
+            background-color: black;
+            /* For browsers that do not support gradients */
+            /*background-image: linear-gradient(141deg, #9fb8addb 0%, #1fc8dbeb 51%, #2cb5e8 75%), url(../../Content/logo/bgfooter.jpg);*/
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-size: cover;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post">
+        <div class="" style="background:#fff;min-height:100vh; margin: 0px 1px">
+            <header id="header">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-xs-12">
+                        <div id="header">
+                            <nav class="navbar navbar-default stylecolor">
+                                <div class="navbar-collapse collapse" id="menu">
+                                    <ul class="nav navbar-nav">
+                                        <a href="Home.html">
+                                            <img src="./image/logo.png"
+                                                 style="width:216px;height:80px;top: 30px;left:45px">
+                                        </a>
+                                    </ul>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="dropdown stylecolor"
+                                            @if (Request.IsAuthenticated)
+                                            {
+                                              
+                                                    <ul class="dropdown-menu stylecolor">
+                                                        <li>
+                                                            @Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "UserProfile", routeValues: null, htmlAttributes: null)
+                                                        </li>
+                                                        <li>
+                                                            @Html.ActionLink("Sign out", "SignOut", "Account")
+                                                        </li>
+                                                    </ul>
+                                             
+                                            }
+                                            else
+                                            {
+                                                <ul class="nav navbar-nav navbar-right">
+                                                    <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                                                </ul>
+                                            }
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div id="body" style="padding-bottom: 5px">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="accordion" id="leftMenu">
+                            <div class="accordion-group">
+                                <div class="accordion-heading menuhome" style="padding:10px">
+                                    <a class="" data-toggle="collapse" data-parent="#leftMenu" href="#">
+                                        <span style="color:#fff !important"></span>
+                                        <b style="color:#fff !important">Chức năng</b>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div style="border:1px solid #dfdfdf;border-top:0px;background:#fff">
+
+                                <div class="">
+                                    <div class="col-md-12 accordion-inner"
+                                         style="border-bottom: 1px solid #dfdfdf;background:#E8E8E8">
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="">
+                                    <div class="col-md-12 accordion-inner"
+                                         style="border-bottom: 1px solid #dfdfdf;background:#E8E8E8">
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <ul>
+                                                    @if (ViewBag.menu != null)
+                                                    {
+                                                        List<AdvisorManagement.Models.ViewModel.MenuItem> listProduct = (List<AdvisorManagement.Models.ViewModel.MenuItem>)ViewBag.menu;
+                                                        foreach (var item in listProduct)
+                                                        {
+                                                            <li style="padding:7px 0px">
+                                                                <div id="test" style="width: 13px;
+                                                                height: 1px;
+                                                                border-bottom: 1px dotted #555;
+                                                                float: left;
+                                                                padding-top: 10px"></div>
+                                                                @switch (item.menuName)
+                                                                {
+                                                                    case "Dashboard":
+                                                                        <a style="color:#333;margin-left:3px"
+                                                                           href="/Home/StudyPrograms">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Thông báo":
+                                                                        <a style="color:#333;margin-left:3px"
+                                                                           href="/Home/StudyPrograms">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Danh sách lớp":
+                                                                        <a style="color:#333;margin-left:3px"
+                                                                           href="/Home/StudyPrograms">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Thông tin lớp":
+                                                                        <a style="color:#333;margin-left:3px"
+                                                                           href="/Home/StudyPrograms">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Tư vấn và trao đổi":
+                                                                        <a style="color:#333;margin-left:3px" href="/Home/Schedules">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Kế hoạch đầu học kì":
+                                                                        <a style="color:#333;margin-left:3px" href="/Home/Exam">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Người dùng và phân quyền":
+                                                                        <a style="color:#333;margin-left:3px"
+                                                                           href="/Home/Decisions">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Lịch họp lớp":
+                                                                        <a style="color:#333;margin-left:3px"
+                                                                           href="/Home/XemDiemRenLuyen">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Công việc":
+                                                                        <a style="color:#333;margin-left:3px" href="/Home/Marks">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Thống kê":
+                                                                        <a style="color:#333;margin-left:3px"
+                                                                           href="/Home/AccountFees">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Báo cáo cuối học kì":
+                                                                        <a style="color:#333;margin-left:3px"
+                                                                           href="/Home/ChiTietHoaDon">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Xử lí học tập":
+                                                                        <a style="color:#333;margin-left:3px"
+                                                                           href="/Home/TongHopHocPhi">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+                                                                    case "Cài đặt":
+                                                                        <a style="color:#333;margin-left:3px"
+                                                                           href="/Home/TongHopHocPhi">
+                                                                            @item.menuName
+                                                                        </a>
+                                                                        break;
+
+                                                                }
+
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="accordion-group" id="accordion-group">
+
+                                </div>
+                                <div class="">
+                                    <div class="col-md-12 accordion-inner"
+                                         style="border-bottom: 1px solid #dfdfdf;background:#E8E8E8">
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <ul>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="divmain">
+                            <div class="bgtitle">Dashboard</div>
+                            @RenderBody()
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer bgfooterr">
+                <div class="row" style="color:white; padding:20px; letter-spacing:0.3px">
+                    <div class="col-md-4">
+                        <div>© Copyright 2022 - Trường đại học Văn Lang</div>
+                        <div>CAPK25TEAM09</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div style="font-weight:bold;">DANH MỤC KHÁC</div>
+                        <hr style="border-top: 2px solid #eee;" />
+                        <div>
+                            <div>
+                                <a href="https://www.vanlanguni.edu.vn/"
+                                   style="color:red; text-decoration:none; cursor:pointer">Trang chủ</a>
+                            </div>
+                            <div>
+                                <a href="https://thuvien.vanlanguni.edu.vn/"
+                                   style="color:red; text-decoration:none; cursor:pointer">Thư viện</a>
+                            </div>
+                            <div>
+                                <a href="https://www.vanlanguni.edu.vn/hoi-dong-giao-su"
+                                   style="color:red; text-decoration:none; cursor:pointer">Hội đồng giáo sư</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div style="font-weight:bold">TRƯỜNG ĐẠI HỌC VĂN LANG</div>
+                        <hr style="border-top: 2px solid #eee;" />
+                        <div>
+                            <div>
+                                <span style="font-size:24px; color:#C25574">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    </svg>
+                                </span> <b>
+                                    Trụ sở: 45 Nguyễn Khắc Nhu, P.
+                                    C&#244; Giang, Q.1, TP. HCM
+                                </b>
+                            </div>
+                            <div>
+                                <span style="font-size:24px; color:#C25574">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    </svg>
+                                </span> <b>
+                                    Cơ sở 2: 233A Phan Văn Trị, P.11,
+                                    Q. Bình Thạnh, TP. HCM
+                                </b>
+                            </div>
+                            <div>
+                                <span style="font-size:24px; color:#C25574">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    </svg>
+                                </span> <b>
+                                    Cơ sở 3: 69/68 Đặng Thùy Trâm, P.
+                                    13, Q. Bình Thạnh, TP. HCM
+                                </b>
+                            </div>
+                            <div>
+                                <span style="font-size:24px; color:#C25574">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    </svg>
+                                </span> <b>
+                                    Ký túc xá: 160/63A-B Phan Huy Ích,
+                                    P. 12, Q. Gò Vấp, TP. HCM
+                                </b>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </footer>
+        </div>
+    </form>
+
+
+</body>
+
+</html>

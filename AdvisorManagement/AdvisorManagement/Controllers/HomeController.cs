@@ -21,6 +21,7 @@ namespace AdvisorManagement.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private CP25Team09Entities dbApp = new CP25Team09Entities();
         private AccountMiddleware accountService = new AccountMiddleware();
+        private MenuMiddleware serviceMenu = new MenuMiddleware();
         private string clientId = ConfigurationManager.AppSettings["ida:ClientId"];
         private string appKey = ConfigurationManager.AppSettings["ida:ClientSecret"];
         private string aadInstance = EnsureTrailingSlash(ConfigurationManager.AppSettings["ida:AADInstance"]);
@@ -76,6 +77,9 @@ namespace AdvisorManagement.Controllers
                 {
                     SessionRe = sql.email;
                 }
+                var seeMenu = serviceMenu.getMenu(user_mail);
+                ViewBag.menu = seeMenu;
+                return View(seeMenu);
             }
             return View();
         }
