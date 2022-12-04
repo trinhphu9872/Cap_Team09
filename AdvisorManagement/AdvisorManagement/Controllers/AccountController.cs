@@ -19,9 +19,6 @@ namespace AdvisorManagement.Controllers
 
     public class AccountController : Controller
     {
-
-        private CP25Team09Entities db = new CP25Team09Entities();
-        private AccountMiddleware accountService = new AccountMiddleware();
         public ActionResult Login()
         {
             return View();

@@ -7,31 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ - 01</title>
 
-    <link href="./Content/bootstrap.css" rel="stylesheet" />
-    <link href="./Content/site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" />
     @*<link href="./Content/css/menu.css" rel="stylesheet" />*@
-    <link href="./Content/css/Yersin.css" rel="stylesheet" />
+    <link href="~/Content/css/Yersin.css" rel="stylesheet" />
 
-    <script src="./Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
 
-    <script src="./Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src=".Scripts/jquery.validate.unobtrusive.js"></script>
 
-    <script src="./Scripts/respond.js"></script>
-    <script src="./Scripts/bootstrap.min.js"></script>
-    <script src="./Scripts/function.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/function.js"></script>
 
     @*<link href="/bundles/cssbyschool" rel="stylesheet" />*@
 
-    <script type="text/javascript" src="./scripts/moment.min.js"></script>
-    <script type="text/javascript" src=".scripts/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="~/scripts/moment.min.js"></script>
+    <script type="text/javascript" src="~/scripts/bootstrap-datetimepicker.min.js"></script>
 
 
-    <link rel="stylesheet" href="./Content/bootstrap-datetimepicker.css" />
-    <link href="./Content/select2-bootstrap.css" rel="stylesheet" />
-    <link href="./Content/select2_2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/bootstrap-datetimepicker.css" />
+    <link href="~/Content/select2-bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/select2_2.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <script src="./Content/select2_2.js"></script>
+    <script src="~/Content/select2_2.js"></script>
 
 
     <style>
@@ -137,10 +137,7 @@
                                                         foreach (var item in listProduct)
                                                         {
                                                             <li style="padding:7px 0px">
-                                                                <div id="test" style="width: 1px;
-                                                                height: 1px;
-                                                                float: left;
-                                                                padding-top: 10px"></div>
+
                                                                 @switch (item.menuName)
                                                                 {
                                                                     case "Dashboard":
@@ -195,12 +192,12 @@
 
                                                                         break;
                                                                     case "Người dùng và phân quyền":
-                                                                        <a style="color:#333;margin-left:3px"
-                                                                           href="./Acount.html">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-gear" viewBox="0 0 16 16">
-                                                                                <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Zm9.886-3.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382l.045-.148ZM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
-                                                                            </svg><text style="margin-left: 2px;">@item.menuName</text>
-                                                                        </a>
+                                                                    <div style="color:#333;margin-left:3px">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-gear" viewBox="0 0 16 16">
+                                                                            <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Zm9.886-3.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382l.045-.148ZM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
+                                                                        </svg><text style="margin-left: 2px;">  @Html.ActionLink(@item.menuName, "Index", "AccountUsers", new { Area = "Admin" }, new{ @style = "color:#333;margin-left:3px" })</text>
+                                                                    </div>
+                                                              
                                                                         break;
                                                                     case "Lịch họp lớp":
                                                                         <a style="color:#333;margin-left:3px"
@@ -210,11 +207,6 @@
                                                                                 <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                                                                             </svg><text style="margin-left: 2px;">@item.menuName</text>
                                                                         </a>
-                                                                        @*break;
-                            case "Công việc":
-                                <a style="color:#333;margin-left:3px" href="/Home/Marks">
-                                    @item.menuName
-                                </a>*@
                                                                         break;
                                                                     case "Thống kê":
                                                                         <a style="color:#333;margin-left:3px"
@@ -293,7 +285,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="divmain">
-                            <div class="bgtitle">VLU</div>
+                            
                             @RenderBody()
                         </div>
 

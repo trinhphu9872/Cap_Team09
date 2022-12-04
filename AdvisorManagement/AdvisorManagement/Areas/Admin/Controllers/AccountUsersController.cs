@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AdvisorManagement.Middleware;
 using AdvisorManagement.Models;
 
 namespace AdvisorManagement.Areas.Admin.Controllers
@@ -14,17 +15,23 @@ namespace AdvisorManagement.Areas.Admin.Controllers
     public class AccountUsersController : Controller
     {
         private CP25Team09Entities db = new CP25Team09Entities();
+        private MenuMiddleware serviceMenu = new MenuMiddleware();
 
         // GET: Admin/AccountUsers
         public ActionResult Index()
         {
             var accountUser = db.AccountUser.Include(a => a.Role);
+            ViewBag.menu = serviceMenu.getMenu(User.Identity.Name);
+            
             return View(accountUser.ToList());
+
         }
 
         // GET: Admin/AccountUsers/Details/5
         public ActionResult Details(Guid? id)
         {
+            ViewBag.menu = serviceMenu.getMenu(User.Identity.Name);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -40,6 +47,8 @@ namespace AdvisorManagement.Areas.Admin.Controllers
         // GET: Admin/AccountUsers/Create
         public ActionResult Create()
         {
+            ViewBag.menu = serviceMenu.getMenu(User.Identity.Name);
+
             ViewBag.id_Role = new SelectList(db.Role, "id", "roleName");
             return View();
         }
@@ -51,6 +60,7 @@ namespace AdvisorManagement.Areas.Admin.Controllers
 
         public ActionResult Create([Bind(Include = "ID,user_code,id_Role,username,gender,phone,address,email,dateofbirth,createtime,picture")] AccountUser accountUser)
         {
+
             if (ModelState.IsValid)
             {
                 accountUser.ID = Guid.NewGuid();
@@ -66,6 +76,8 @@ namespace AdvisorManagement.Areas.Admin.Controllers
         // GET: Admin/AccountUsers/Edit/5
         public ActionResult Edit(Guid? id)
         {
+            ViewBag.menu = serviceMenu.getMenu(User.Identity.Name);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -99,6 +111,8 @@ namespace AdvisorManagement.Areas.Admin.Controllers
         // GET: Admin/AccountUsers/Delete/5
         public ActionResult Delete(Guid? id)
         {
+            ViewBag.menu = serviceMenu.getMenu(User.Identity.Name);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -113,7 +127,7 @@ namespace AdvisorManagement.Areas.Admin.Controllers
 
         // POST: Admin/AccountUsers/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+    
         public ActionResult DeleteConfirmed(Guid id)
         {
             AccountUser accountUser = db.AccountUser.Find(id);
