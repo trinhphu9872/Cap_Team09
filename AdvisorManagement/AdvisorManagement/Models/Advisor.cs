@@ -17,13 +17,13 @@ namespace AdvisorManagement.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Advisor()
         {
-            this.Class = new HashSet<Class>();
+            this.Classes = new HashSet<Class>();
         }
     
         public string advisorcode { get; set; }
         public Nullable<int> id_status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Class> Class { get; set; }
+        public virtual ICollection<Class> Classes { get; set; }
     }
 }

@@ -17,16 +17,13 @@ namespace AdvisorManagement.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
-            this.AccountUser = new HashSet<AccountUser>();
-            this.RoleMenu = new HashSet<RoleMenu>();
+            this.RoleMenus = new HashSet<RoleMenu>();
         }
     
         public int id { get; set; }
         public string roleName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccountUser> AccountUser { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RoleMenu> RoleMenu { get; set; }
+        public virtual ICollection<RoleMenu> RoleMenus { get; set; }
     }
 }
