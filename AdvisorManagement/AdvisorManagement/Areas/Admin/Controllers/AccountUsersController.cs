@@ -107,14 +107,26 @@ namespace AdvisorManagement.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
    
-        public ActionResult Edit([Bind(Include = "ID,user_code,id_Role,username,gender,phone,address,email,dateofbirth,createtime,picture")] AccountUser accountUser)
+        public ActionResult Edit( AccountUser accountUser)
         {
             if (ModelState.IsValid)
             {
+                
+                if (accountUser.ImageUpload != null)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(accountUser.ImageUpload.FileName).ToString();
+                    string extension = Path.GetExtension(accountUser.ImageUpload.FileName);
+                    filename = filename + extension;
+                    accountUser.picture = "~/Image/imageProfile/" + filename;
+                    accountUser.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Image/imageProfile/"), filename));
+                }
+
+                accountUser.createtime = DateTime.Now;
                 db.Entry(accountUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.id_Role = new SelectList(db.Role, "id", "roleName", accountUser.id_Role);
             return View(accountUser);
         }
