@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AdvisorManagement",
+    "\\AdvisorManagement\\AdvisorManagement",
+    "\\AdvisorManagement\\AdvisorManagement\\Areas",
+    "\\AdvisorManagement\\AdvisorManagement\\Areas\\Admin",
+    "\\AdvisorManagement\\AdvisorManagement\\Areas\\Admin\\Controllers",
+    "\\AdvisorManagement\\AdvisorManagement\\Controllers",
+    "\\AdvisorManagement\\AdvisorManagement\\Models",
+    "\\AdvisorManagement\\AdvisorManagement\\Views"
+  ],
+  "SelectedNode": "\\AdvisorManagement\\AdvisorManagement.sln",
+  "PreviewInSolutionExplorer": false
+}

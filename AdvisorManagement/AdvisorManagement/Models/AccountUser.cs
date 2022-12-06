@@ -11,7 +11,9 @@ namespace AdvisorManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class AccountUser
     {
         public System.Guid ID { get; set; }
@@ -24,6 +26,8 @@ namespace AdvisorManagement.Models
         public string email { get; set; }
         public string dateofbirth { get; set; }
         public System.DateTime createtime { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
         public string picture { get; set; }
     
         public virtual Role Role { get; set; }

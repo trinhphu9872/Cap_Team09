@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -50,20 +51,30 @@ namespace AdvisorManagement.Areas.Admin.Controllers
             ViewBag.menu = serviceMenu.getMenu(User.Identity.Name);
 
             ViewBag.id_Role = new SelectList(db.Role, "id", "roleName");
-            return View();
+            AccountUser user = new AccountUser();
+            return View(user);
         }
 
         // POST: Admin/AccountUsers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-
-        public ActionResult Create([Bind(Include = "ID,user_code,id_Role,username,gender,phone,address,email,dateofbirth,createtime,picture")] AccountUser accountUser)
+        public ActionResult Create(AccountUser accountUser, HttpPostedFileBase ImageUpload)
         {
 
             if (ModelState.IsValid)
             {
                 accountUser.ID = Guid.NewGuid();
+                if (accountUser.ImageUpload != null)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(accountUser.ImageUpload.FileName).ToString();
+                    string extension = Path.GetExtension(accountUser.ImageUpload.FileName);
+                    filename = filename + extension;
+                    accountUser.picture = "~/Image/imageProfile/" + filename;
+                    accountUser.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Image/imageProfile/"), filename));
+                }
+
+                accountUser.createtime = DateTime.Now;
                 db.AccountUser.Add(accountUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
