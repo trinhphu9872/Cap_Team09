@@ -22,5 +22,20 @@ namespace AdvisorManagement.Middleware
                            }).ToList();
             return seeMenu;
         }
+
+        public object getRoleMenu()
+        {
+            var roleMenu = (from mnrole in db.RoleMenu
+                            join mn in db.Menu on mnrole.id_Menu equals mn.id
+                           join role in db.Role on mnrole.id_Role equals role.id
+                           where role.id == mnrole.id_Role && mnrole.id_Menu == mn.id
+                           select new Models.ViewModel.MenuRole
+                           {
+                               id = mnrole.id,
+                               roleName = role.roleName,
+                               menuName = mn.nameMenu
+                           }).ToList();
+            return roleMenu;
+        }
     }
 }

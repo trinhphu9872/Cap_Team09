@@ -10,7 +10,9 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using System.Net;
 using System.Web.Mvc;
+using System.Data.Entity;
 using System.Web.WebPages;
 
 namespace AdvisorManagement.Controllers
@@ -29,7 +31,7 @@ namespace AdvisorManagement.Controllers
 
         public async Task<ActionResult> Index()
         {
-      
+        
             string SessionRe = "";
             int roles = 3;
             string user_mail = User.Identity.Name;
@@ -78,7 +80,9 @@ namespace AdvisorManagement.Controllers
                     SessionRe = sql.email;
                 }
                 var seeMenu = serviceMenu.getMenu(user_mail);
+              
                 ViewBag.menu = seeMenu;
+                
                 return View(seeMenu);
             }
             return View();
@@ -130,6 +134,126 @@ namespace AdvisorManagement.Controllers
             }
 
             return value;
+        }
+
+        public ActionResult RoleMenu()
+        {
+            ViewBag.Message = "Role Menu";
+            var roleMenu = serviceMenu.getRoleMenu();
+
+            ViewBag.roleMenu = roleMenu;
+            ViewBag.menu = serviceMenu.getMenu(User.Identity.Name);
+            return View(roleMenu);
+        }
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RoleMenu roleMenu = dbApp.RoleMenu.Find(id);
+            if (roleMenu == null)
+            {
+                return HttpNotFound();
+            }
+            return View(roleMenu);
+        }
+
+        // GET: RoleMenus/Create
+        public ActionResult Create()
+        {
+            ViewBag.id_Menu = new SelectList(dbApp.Menu, "id", "nameMenu");
+            ViewBag.id_Role = new SelectList(dbApp.Role, "id", "roleName");
+            return View();
+        }
+
+        // POST: RoleMenus/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "id,id_Role,id_Menu")] RoleMenu roleMenu)
+        {
+            if (ModelState.IsValid)
+            {
+                dbApp.RoleMenu.Add(roleMenu);
+                dbApp.SaveChanges();
+                return RedirectToAction("RoleMenu");
+            }
+
+            ViewBag.id_Menu = new SelectList(dbApp.Menu, "id", "nameMenu", roleMenu.id_Menu);
+            ViewBag.id_Role = new SelectList(dbApp.Role, "id", "roleName", roleMenu.id_Role);
+            return View(roleMenu);
+        }
+
+        // GET: RoleMenus/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RoleMenu roleMenu = dbApp.RoleMenu.Find(id);
+            if (roleMenu == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.id_Menu = new SelectList(dbApp.Menu, "id", "nameMenu", roleMenu.id_Menu);
+            ViewBag.id_Role = new SelectList(dbApp.Role, "id", "roleName", roleMenu.id_Role);
+            return View(roleMenu);
+        }
+
+        // POST: RoleMenus/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id,id_Role,id_Menu")] RoleMenu roleMenu)
+        {
+            if (ModelState.IsValid)
+            {
+                dbApp.Entry(roleMenu).State = EntityState.Modified;
+                dbApp.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.id_Menu = new SelectList(dbApp.Menu, "id", "nameMenu", roleMenu.id_Menu);
+            ViewBag.id_Role = new SelectList(dbApp.Role, "id", "roleName", roleMenu.id_Role);
+            return View(roleMenu);
+        }
+
+        // GET: RoleMenus/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RoleMenu roleMenu = dbApp.RoleMenu.Find(id);
+            if (roleMenu == null)
+            {
+                return HttpNotFound();
+            }
+            return View(roleMenu);
+        }
+
+        // POST: RoleMenus/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            RoleMenu roleMenu = dbApp.RoleMenu.Find(id);
+            dbApp.RoleMenu.Remove(roleMenu);
+            dbApp.SaveChanges();
+            return RedirectToAction("RoleMenu");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                dbApp.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
