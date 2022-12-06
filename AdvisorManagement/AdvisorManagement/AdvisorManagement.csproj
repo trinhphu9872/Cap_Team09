@@ -339,7 +339,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutCustom.cshtml" />
     <Content Include="Views\Home\ThongBao.cshtml" />
-    <Content Include="Views\Home\RoleMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

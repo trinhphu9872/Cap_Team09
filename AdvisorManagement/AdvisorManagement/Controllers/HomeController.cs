@@ -136,15 +136,6 @@ namespace AdvisorManagement.Controllers
             return value;
         }
 
-        public ActionResult RoleMenu()
-        {
-            ViewBag.Message = "Role Menu";
-            var roleMenu = serviceMenu.getRoleMenu();
-
-            ViewBag.roleMenu = roleMenu;
-            ViewBag.menu = serviceMenu.getMenu(User.Identity.Name);
-            return View(roleMenu);
-        }
         public ActionResult Details(int? id)
         {
             if (id == null)

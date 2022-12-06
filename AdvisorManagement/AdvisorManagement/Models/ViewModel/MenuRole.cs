@@ -9,7 +9,7 @@ namespace AdvisorManagement.Models.ViewModel
     {
         public int id { get; set; }
         public string menuName { get; set; }
-
         public string roleName { get; set; }
+
     }
 }
